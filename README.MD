@@ -3,7 +3,7 @@
 In order to reproduce the model and its artifacs.
 Create a conda environment following these steps:
 
-```
+```bash
 $ cd notebooks
 notebooks $ conda env create -f environment.yml
 notebooks $ conda activate rappi-train
@@ -11,7 +11,8 @@ notebooks $ conda activate rappi-train
 /some-path/anaconda3/envs/rappi-train/bin/python
 ```
 Then, launch the jupyter notebook:
-```
+
+```bash
 $ jupyter notebook
 ```
 
@@ -20,13 +21,13 @@ And create the model and its artifacs by running the notebook:
 
 # Use Docker and run the serving of the model.
 
-```
+```bash
 cd rappi-app
 docker build -t rappi-app .
 docker run -d -p 5000:5000 --name rappi-app rappi-app -v rappi-app:/app
 ```
 
-```
+```bash
 cd rappi-mysql
 docker build -t rappi-mysql .
 docker run -d -p 5001:5001 --name rappi-mysql -e MYSQL_ROOT_PASSWORD=rappi-secret rappi-mysql
@@ -91,10 +92,3 @@ response
      'x': '{"store_id": NaN, "to_user_distance": 0.0, "to_user_elevation": 0.0, "total_earning": 10000.0, "weekday": 0.9083583369052722}',
      'x_raw': '{"order_id": "1", "store_id": "2", "to_user_distance": 0.0, "to_user_elevation": 0.0, "total_earning": 10000.0, "created_at": "2020-09-07 20:02:17+00:00", "weekday": "Monday"}',
      'y_score': 0.31567850708961487}
-
-
-
-
-```python
-
-```
