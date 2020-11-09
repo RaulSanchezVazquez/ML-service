@@ -1,6 +1,6 @@
 # Reproduce the experiment and train the model.
 
-In order to reproduce the model and its artifacs.
+In order to reproduce the model and its artifacts.
 Create a conda environment following these steps:
 
 ```bash
@@ -16,7 +16,7 @@ Then, launch the jupyter notebook:
 $ jupyter notebook
 ```
 
-And create the model and its artifacs by running the notebook:
+And create the model and its artifacts by running the notebook:
 `notebooks/Training and Experiment.ipynb`
 
 # Use Docker and run the serving of the model.
