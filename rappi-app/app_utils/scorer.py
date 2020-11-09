@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+@author: Raul Sanchez-Vazquez
+"""
 import os
 import pickle
 
@@ -27,7 +30,9 @@ def save(xgb_model):
 
 
 def load():
-    """
+    """Load the model.
+
+    If this method is invoqued multiple times the model is just loaded once.
     """
     global _xgb_model
 
@@ -39,7 +44,12 @@ def load():
 
 
 def predict_proba(x):
-    """
+    """Get model predictions.
+
+    Returns
+    --------
+    y_score: np.array
+        The model scores.
     """
 
     global _xgb_model

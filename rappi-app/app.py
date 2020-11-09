@@ -3,7 +3,6 @@
 """
 @author: Raul Sanchez-Vazquez
 """
-import json
 import time
 
 from flask import Flask
@@ -22,22 +21,26 @@ from app_utils import rappy_mysql
 # App.
 app = Flask(__name__)
 
-# Init objects
+# Init objects.
 logger.init()
+
+# Load the feature encoder object.
 encoder.load()
+
+# Load the model pickle.
 scorer.load()
 
 
 @app.route('/')
 def index():
-    """
+    """Get model version.
     """
     return {"version": config.version}
 
 
-@app.route('/score', methods = ['POST'])
+@app.route('/score', methods=['POST'])
 def score():
-    """
+    """Get model score.
 
     Example
     --------
@@ -49,8 +52,7 @@ def score():
             'to_user_distance': '2.4781006757058885',
             'to_user_elevation': '-72.71936035156295',
             'total_earning': '4200',
-            'created_at': '2017-09-07T20:02:17Z',
-            'taken': '0'}
+            'created_at': '2017-09-07T20:02:17Z'}
     """
     start = time.time()
 
@@ -89,7 +91,6 @@ def score():
     response = jsonify(response)
 
     return response
-
 
 
 if __name__ == '__main__':

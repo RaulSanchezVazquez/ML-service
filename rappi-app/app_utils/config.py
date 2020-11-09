@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Sat Nov  7 17:01:31 2020
-
 @author: Raul Sanchez-Vazquez
 """
 import os
 
+# Model version
 version = '1.0.0'
 
 # Project path
 PRJ_DIR = '/'.join(os.path.abspath(__file__).split('/')[:-2])
-
 
 # Path were artifacts are stored.
 ARTIFACTS_PATH = os.path.join(

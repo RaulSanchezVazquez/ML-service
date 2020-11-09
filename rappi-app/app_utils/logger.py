@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+@author: Raul Sanchez-Vazquez
+"""
 import logging
 
 _LOGGER = None
@@ -7,11 +10,24 @@ _LOGGER = None
 
 def init(name='root'):
     """Configures a global logger.
-​
-    Return
-    ------
-    logger : logging.Logger
+
+    If this method is invoqued multiple times the logger is just initialized
+    once.
+
+    Returns
+    --------
+
+    logger: logging.Logger
         Logger.
+
+    Example
+    --------
+    ::
+
+        >>> from app_utils import logger
+        >>> logger.init()
+        >>> logger._LOGGER.info('Log some message')
+        2020-11-08 21:45:26,355 :: INFO :: <module> :: 6 :: Log some message
     """
     global _LOGGER
 

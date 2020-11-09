@@ -1,25 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+@author: Raul Sanchez-Vazquez
+"""
 import os
+
+from sqlalchemy import \
+    Table, Column, Integer, String, MetaData, Float, DateTime, create_engine
 
 from app_utils import logger
 
+# Init
 logger.init()
-
-from sqlalchemy import create_engine
-from sqlalchemy import (
-    Table, Column, Integer, String, MetaData, Float, DateTime)
 
 
 def connect():
     """Creates sqlalchemy engine used connect to database.
 
-    Return
-    ------
+    Returns
+    -------
     engine : sqlalchemy.engine.base.Engine
         sqlalchemy engined used to fetch data.
-
-        'mysql://root:rappi-secret@0.0.0.0:5001/rappi?charset=utf8'
     """
 
     port = os.getenv('RAPPI_DB_PORT')
@@ -31,15 +32,18 @@ def connect():
     connect_str = "mysql://%s:%s@%s:%s/%s?charset=utf8" % (
         user, passw, host, port, db_name)
 
-    logger._LOGGER.info(connect_str)
-
     engine = create_engine(connect_str)
 
     return engine
 
 
 def get_model_response():
-    """
+    """Get Table use to store models.
+
+    Returns
+    -------
+    model_response : sqlalchemy.sql.schema.Table
+        Table object.
     """
     meta = MetaData()
 
@@ -60,27 +64,34 @@ def get_model_response():
 
 
 def store_response(response):
-    """
+    """Persis the response object in DB.
 
     Parameters
     ----------
     response: dict
 
+    Returns
+    --------
+    id_model_result: int
+        The ID of the response stored in DB.
+
     Example
     -------
     ::
 
-        response = {
-            'order_id': 1,
-            'store_id': 2,
-            'version': '1.0.0',
-            'execution_time': 1,
-            'y_score': 0.1,
-            'x': 'x_test',
-            'x_raw': 'x_test'
-        }
+        >>> from app_utils import rappy_mysql
+        >>> response = {
+                'order_id': 1,
+                'store_id': 2,
+                'version': '1.0.0',
+                'execution_time': 1,
+                'y_score': 0.1,
+                'x': 'x_test',
+                'x_raw': 'x_test'}
 
-        store_response(response)
+        >>> id_insert = rappy_mysql.store_response(response)
+        >>> id_insert[0]
+        1
 
     """
     # Get connection eng.
@@ -101,4 +112,4 @@ def store_response(response):
     # Close connection to database
     engine.dispose()
 
-    return id_model_result
+    return id_model_result[0]

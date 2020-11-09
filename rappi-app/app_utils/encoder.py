@@ -10,11 +10,12 @@ import json
 from app_utils import config
 
 
+# Path were to store the encoder
 ENCODER_PATH = os.path.join(
     config.ARTIFACTS_PATH,
     'encoder.json')
 
-
+# Aux. variable used to load once the object
 _categ_enc = None
 
 
@@ -49,7 +50,9 @@ def get():
 
 
 def load():
-    """
+    """Load the encoder object in to memory.
+
+    This is done once regardless of how many times this method is invoqued.
     """
     global _categ_enc
 
