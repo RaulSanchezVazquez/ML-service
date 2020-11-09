@@ -14,6 +14,11 @@ RUN conda activate rappi
 RUN conda install numpy pandas -y
 RUN conda install -c conda-forge xgboost==1.2.0 -y
 RUN pip install -r requirements.txt
+RUN apt-get install python-mysqldb
+RUN pip install mysql-python
+RUN pip install mysql-connector
+RUN conda install -c bioconda mysqlclient
+
 
 EXPOSE 5000
 
