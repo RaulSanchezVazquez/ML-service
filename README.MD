@@ -90,7 +90,7 @@ response
     {'execution_time': 0.02066326141357422,
      'order_id': 1,
      'store_id': 2,
-     'version': '1.1.0',
+     'version': '1.0.0',
      'x': '{"store_id": NaN, "to_user_distance": 0.0, "to_user_elevation": 0.0, "total_earning": 10000.0, "weekday": 0.9083583369052722}',
      'x_raw': '{"order_id": "1", "store_id": "2", "to_user_distance": 0.0, "to_user_elevation": 0.0, "total_earning": 10000.0, "created_at": "2020-09-07 20:02:17+00:00", "weekday": "Monday"}',
      'y_score': 0.31567850708961487}
