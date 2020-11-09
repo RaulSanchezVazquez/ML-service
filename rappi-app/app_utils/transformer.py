@@ -178,11 +178,14 @@ def json_to_df(x):
     x: pandas.DataFrame
         Dataframe containing a single row.
     """
+
+    # Must have all the required features.
     missing_features = set(_features) - set(x.keys())
 
     if len(missing_features) > 0:
         return None
 
+    # Transform to dataframe
     x = pd.DataFrame([x])
 
     return x
