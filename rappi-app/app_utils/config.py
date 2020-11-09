@@ -7,7 +7,7 @@ Created on Sat Nov  7 17:01:31 2020
 """
 import os
 
-version = '1.1.0'
+version = '1.0.0'
 
 # Project path
 PRJ_DIR = '/'.join(os.path.abspath(__file__).split('/')[:-2])

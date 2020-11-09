@@ -17,10 +17,10 @@ RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
-ENV RAPPI_DB_PORT 3306
+ENV RAPPI_DB_PORT 5001
 ENV RAPPI_DB_HOST '0.0.0.0'
 ENV RAPPI_DB_USER 'root'
 ENV RAPPI_DB_PASSW 'rappi-secret'
 ENV RAPPI_DB_NAME 'rappi'
 
-ENTRYPOINT ["conda", "run", "-n", "rappi", "python", "app.py", ">server.log"]
+ENTRYPOINT ["conda", "run", "-n", "rappi", "python", "app.py", "2>server.log"]

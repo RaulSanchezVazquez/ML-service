@@ -21,16 +21,18 @@ And create the model and its artifacs by running the notebook:
 
 # Use Docker and run the serving of the model.
 
+Run the my-sql server.
+```bash
+cd rappi-mysql
+docker build -t rappi-mysql .
+docker run -d -p 5001:3306 --name rappi-mysql -e MYSQL_ROOT_PASSWORD=rappi-secret rappi-mysql
+```
+
+Run the model server.
 ```bash
 cd rappi-app
 docker build -t rappi-app .
 docker run -d -p 5000:5000 --name rappi-app rappi-app -v rappi-app:/app
-```
-
-```bash
-cd rappi-mysql
-docker build -t rappi-mysql .
-docker run -d -p 5001:5001 --name rappi-mysql -e MYSQL_ROOT_PASSWORD=rappi-secret rappi-mysql
 ```
 
 ## Test the API

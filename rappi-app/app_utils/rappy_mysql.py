@@ -4,6 +4,8 @@ import os
 
 from app_utils import logger
 
+logger.init()
+
 from sqlalchemy import create_engine
 from sqlalchemy import (
     Table, Column, Integer, String, MetaData, Float, DateTime)
@@ -16,6 +18,8 @@ def connect():
     ------
     engine : sqlalchemy.engine.base.Engine
         sqlalchemy engined used to fetch data.
+
+        'mysql://root:rappi-secret@0.0.0.0:5001/rappi?charset=utf8'
     """
 
     port = os.getenv('RAPPI_DB_PORT')
@@ -28,8 +32,8 @@ def connect():
         user, passw, host, port, db_name)
 
     logger._LOGGER.info(connect_str)
-    engine = None
-    # engine = create_engine(connect_str)
+
+    engine = create_engine(connect_str)
 
     return engine
 
@@ -82,20 +86,19 @@ def store_response(response):
     # Get connection eng.
     engine = connect()
 
-    # # Fetch table object
-    # model_response = get_model_response()
-    #
-    # # Insert operation
-    # insert = model_response.insert().values(response)
-    #
-    # # Execute the insert
-    # result = engine.execute(insert)
-    #
-    # # Get model_response ID
-    # id_model_result = result.inserted_primary_key
-    #
-    # # Close connection to database
-    # engine.dispose()
-    id_model_result = None
-    
+    # Fetch table object
+    model_response = get_model_response()
+
+    # Insert operation
+    insert = model_response.insert().values(response)
+
+    # Execute the insert
+    result = engine.execute(insert)
+
+    # Get model_response ID
+    id_model_result = result.inserted_primary_key
+
+    # Close connection to database
+    engine.dispose()
+
     return id_model_result
